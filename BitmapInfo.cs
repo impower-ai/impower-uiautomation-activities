@@ -13,8 +13,8 @@ namespace Impower.UiAutomation
     {
         [RequiredArgument]
         public InArgument<Bitmap> InputBitmap { get; set; }
-        public OutArgument<Bitmap> AverageColor { get; set; }
-        public OutArgument<Bitmap> AverageBrightness { get; set; }
+        public OutArgument<Color> AverageColor { get; set; }
+        public OutArgument<float> AverageBrightness { get; set; }
 
         protected override void Execute(CodeActivityContext context)
         {
