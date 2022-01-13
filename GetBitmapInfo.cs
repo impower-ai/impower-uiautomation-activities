@@ -10,35 +10,30 @@ using System.Text;
 namespace Impower.UiAutomation
 {
     [DisplayName("Get Bitmap Info")]
-    public class BitmapInfo : CodeActivity
+    public class GetBitmapInfo : CodeActivity
     {
         [Description("Input Bitmap to get info from.")]
         [DisplayName("Input Bitmap")]
         [RequiredArgument]
         public InArgument<Bitmap> InputBitmap { get; set; }
 
-        [Description("Resulting average color.")]
-        [DisplayName("Average Color")]
-        public OutArgument<Color> AverageColor { get; set; }
-
-        [Description("Resulting average brightness.")]
-        [DisplayName("Average Brightness")]
-        public OutArgument<float> AverageBrightness { get; set; }
+        [Description("Resulting Bitmap Info Object")]
+        [DisplayName("Output Bitmap Info Object")]
+        public OutArgument<ImpowerBitmapInfoObj> OutputBitmapInfo { get; set; }
 
         protected override void Execute(CodeActivityContext context)
         {
-            BitmapInfoObj bitmapInfo = GetInfo(InputBitmap.Get(context));
-            AverageColor.Set(context, bitmapInfo.AverageColor);
-            AverageBrightness.Set(context, bitmapInfo.AverageBrightness);
+            ImpowerBitmapInfoObj bitmapInfo = GetInfo(InputBitmap.Get(context));
+            OutputBitmapInfo.Set(context, bitmapInfo);
         }
 
-        private class BitmapInfoObj
+        public class ImpowerBitmapInfoObj
         {
             public Color AverageColor { get; set; }
             public float AverageBrightness { get; set; }
         }
 
-        private BitmapInfoObj GetInfo(Bitmap b)
+        private ImpowerBitmapInfoObj GetInfo(Bitmap b)
         {
             float brightnessTotal = 0;
             int redTotal = 0;
@@ -59,7 +54,7 @@ namespace Impower.UiAutomation
             redTotal /= totalPixels;
             greenTotal /= totalPixels;
             blueTotal /= totalPixels;
-            var bitmapInfoObj = new BitmapInfoObj
+            var bitmapInfoObj = new ImpowerBitmapInfoObj
             {
                 AverageColor = Color.FromArgb(redTotal, greenTotal, blueTotal),
                 AverageBrightness = brightnessTotal / totalPixels
