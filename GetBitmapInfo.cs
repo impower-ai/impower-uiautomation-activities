@@ -7,7 +7,7 @@ using UiPath.Activities;
 using System.IO;
 using System.Text;
 
-namespace Impower.UiAutomation
+namespace Impower.UiAutomation.Bitmap
 {
     [DisplayName("Get Bitmap Info")]
     public class GetBitmapInfo : CodeActivity
@@ -16,7 +16,7 @@ namespace Impower.UiAutomation
         [Description("Input Bitmap to get info from.")]
         [DisplayName("Input Bitmap")]
         [RequiredArgument]
-        public InArgument<Bitmap> InputBitmap { get; set; }
+        public InArgument<System.Drawing.Bitmap> InputBitmap { get; set; }
 
         [Category("Output")]
         [Description("Resulting Bitmap Info Object")]
@@ -35,7 +35,7 @@ namespace Impower.UiAutomation
             public float AverageBrightness { get; set; }
         }
 
-        private ImpowerBitmapInfoObj GetInfo(Bitmap b)
+        private ImpowerBitmapInfoObj GetInfo(System.Drawing.Bitmap b)
         {
             float brightnessTotal = 0;
             int redTotal = 0;
@@ -56,12 +56,11 @@ namespace Impower.UiAutomation
             redTotal /= totalPixels;
             greenTotal /= totalPixels;
             blueTotal /= totalPixels;
-            var bitmapInfoObj = new ImpowerBitmapInfoObj
+            return new ImpowerBitmapInfoObj
             {
                 AverageColor = Color.FromArgb(redTotal, greenTotal, blueTotal),
                 AverageBrightness = brightnessTotal / totalPixels
             };
-            return bitmapInfoObj;
         }
     }
 }

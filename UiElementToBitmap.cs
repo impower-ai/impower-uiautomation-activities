@@ -6,7 +6,7 @@ using UiPath.Core;
 using UiPath.Activities;
 using System.IO;
 
-namespace Impower.UiAutomation
+namespace Impower.UiAutomation.Bitmap
 {
     [DisplayName("UiElement to Bitmap")]
     public class UiElementToBitmap : CodeActivity
@@ -20,17 +20,17 @@ namespace Impower.UiAutomation
         [Category("Output")]
         [Description("Resulting bitmap.")]
         [DisplayName("Output Bitmap")]
-        public OutArgument<Bitmap> OutputBitmap { get; set; }
+        public OutArgument<System.Drawing.Bitmap> OutputBitmap { get; set; }
 
         protected override void Execute(CodeActivityContext context)
         {
             UiElement inputEl = InputElement.Get(context);
             UiPath.Core.Image screenshot = inputEl.Screenshot();
             byte[] screenshotByteArr = screenshot.ByteArray;
-            Bitmap bmp;
+            System.Drawing.Bitmap bmp;
             using (var ms = new MemoryStream(screenshotByteArr))
             {
-                bmp = new Bitmap(ms);
+                bmp = new System.Drawing.Bitmap(ms);
             }
             OutputBitmap.Set(context, bmp);
         }
