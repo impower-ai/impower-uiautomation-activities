@@ -9,11 +9,20 @@ using System.Text;
 
 namespace Impower.UiAutomation
 {
+    [DisplayName("Get Bitmap Info")]
     public class BitmapInfo : CodeActivity
     {
+        [Description("Input Bitmap to get info from.")]
+        [DisplayName("Input Bitmap")]
         [RequiredArgument]
         public InArgument<Bitmap> InputBitmap { get; set; }
+
+        [Description("Resulting average color.")]
+        [DisplayName("Average Color")]
         public OutArgument<Color> AverageColor { get; set; }
+
+        [Description("Resulting average brightness.")]
+        [DisplayName("Average Brightness")]
         public OutArgument<float> AverageBrightness { get; set; }
 
         protected override void Execute(CodeActivityContext context)

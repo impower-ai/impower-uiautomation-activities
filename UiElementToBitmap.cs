@@ -8,10 +8,16 @@ using System.IO;
 
 namespace Impower.UiAutomation
 {
+    [DisplayName("UiElement to Bitmap")]
     public class UiElementToBitmap : CodeActivity
     {
+        [Description("UiElement to convert to bitmap.")]
+        [DisplayName("Input UiElement")]
         [RequiredArgument]
         public InArgument<UiElement> InputElement { get; set; }
+
+        [Description("Resulting bitmap.")]
+        [DisplayName("Output Bitmap")]
         public OutArgument<Bitmap> OutputBitmap { get; set; }
 
         protected override void Execute(CodeActivityContext context)
