@@ -29,12 +29,6 @@ namespace Impower.UiAutomation.Bitmap
             OutputBitmapInfo.Set(context, bitmapInfo);
         }
 
-        public class ImpowerBitmapInfoObj
-        {
-            public Color AverageColor { get; set; }
-            public float AverageBrightness { get; set; }
-        }
-
         private ImpowerBitmapInfoObj GetInfo(System.Drawing.Bitmap b)
         {
             float brightnessTotal = 0;
@@ -62,5 +56,10 @@ namespace Impower.UiAutomation.Bitmap
                 AverageBrightness = brightnessTotal / totalPixels
             };
         }
+    }
+    public class ImpowerBitmapInfoObj
+    {
+        public Color AverageColor { get; set; }
+        public float AverageBrightness { get; set; }
     }
 }
