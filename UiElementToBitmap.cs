@@ -11,11 +11,13 @@ namespace Impower.UiAutomation
     [DisplayName("UiElement to Bitmap")]
     public class UiElementToBitmap : CodeActivity
     {
+        [Category("Input")]
         [Description("UiElement to convert to bitmap.")]
         [DisplayName("Input UiElement")]
         [RequiredArgument]
         public InArgument<UiElement> InputElement { get; set; }
 
+        [Category("Output")]
         [Description("Resulting bitmap.")]
         [DisplayName("Output Bitmap")]
         public OutArgument<Bitmap> OutputBitmap { get; set; }

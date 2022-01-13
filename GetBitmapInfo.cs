@@ -12,11 +12,13 @@ namespace Impower.UiAutomation
     [DisplayName("Get Bitmap Info")]
     public class GetBitmapInfo : CodeActivity
     {
+        [Category("Input")]
         [Description("Input Bitmap to get info from.")]
         [DisplayName("Input Bitmap")]
         [RequiredArgument]
         public InArgument<Bitmap> InputBitmap { get; set; }
 
+        [Category("Output")]
         [Description("Resulting Bitmap Info Object")]
         [DisplayName("Output Bitmap Info Object")]
         public OutArgument<ImpowerBitmapInfoObj> OutputBitmapInfo { get; set; }
