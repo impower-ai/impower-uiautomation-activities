@@ -8,4 +8,8 @@
     <PackageReference Include="UiPath.UIAutomation.Activities" Version="21.10.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <UiPathFiles Remove="GetBitmapInfo.cs" />
+  </ItemGroup>
+
 </Project>
