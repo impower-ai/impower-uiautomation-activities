@@ -4,6 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
 A collection of custom activities built for UiPath Studio.
+After installation, activities will be available in the activities panel under Impower/UiAutomation
 
 ### Bitmap:
 - Get Bitmap from UiElement
