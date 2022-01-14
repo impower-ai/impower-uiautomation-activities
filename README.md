@@ -1,5 +1,5 @@
 # **Impower.UiAutomation.Activities**
-![Package Version](https://img.shields.io/nuget/v/Impower.UiAutomation.Activities.svg?style=flat-square)
+![Package Version](https://img.shields.io/nuget/v/Impower.UiAutomation.Activities.svg?style=flat-square)  
 A collection of custom activities built for UiPath Studio.
 
 ### Bitmap:
